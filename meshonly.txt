@@ -1,0 +1,13 @@
+import bpy
+
+# This script selects all objects hierarchy that have mesh on them
+# After executing this script, just invert the selection (ctrl+I) and delete (X)
+
+for o in bpy.data.objects:
+    if o.type == "MESH":
+        obj = o
+        while True:
+            obj.select_set(True)
+            obj = obj.parent
+            if obj == None:
+                break;
